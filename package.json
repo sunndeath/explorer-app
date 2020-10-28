@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:npx": "npx -p @angular/cli@ ng serve --open",
+    "ng:npx": "npx -p @angular/cli@ ng",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
