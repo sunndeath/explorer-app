@@ -1,8 +1,15 @@
-<h1>{{ title | uppercase }}</h1>
+<h1 class="title">{{ title | uppercase }}</h1>
 
-<ul>
-  <li *ngFor="let todo of todos">
-    <span>{{todo.id}} - {{todo.text}}</span>
-    <input type="text">
+<ul class="list">
+  <li class="item" *ngFor="let todo of todos">
+    <div class="todo content" *ngIf="!todo.isEditable" (click)="setTodoUIState(todo.id)">
+      {{todo.text}}
+    </div>
+    <div class="todo input-box" *ngIf="todo.isEditable">
+      <input type="text" [value]="todo.text" (input)="todo.text=$event.target.value" (keyup.enter)="setTodoText(todo.id, $event.target.value)">
+  </div>
+  <button class="delete-btn" (click)="deleteTodo(todo.id)">Delete todo x</button>
   </li>
 </ul>
+
+<button class="add-btn" (click)="addTodo()">Add todo +</button>
